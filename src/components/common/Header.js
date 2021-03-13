@@ -14,13 +14,16 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   viewStyle: {
-    borderBottomWidth: 2,
-    borderColor: '#D3D3D3',
-    padding: 10,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    marginTop: 40,
+    backgroundColor: '#F8F8F8',
+    paddingTop: 15,
+    alignItems: 'center',
+    height: 60,
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 2},
+    shadowOpacity: 0.5,
+    position: 'relative',
+    elevation: 2,
   },
 });
 
-export default Header;
+export {Header};

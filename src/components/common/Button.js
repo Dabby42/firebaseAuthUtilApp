@@ -15,16 +15,18 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 5,
     backgroundColor: '#fff',
-    padding: 10,
+    alignSelf: 'stretch',
     flex: 1,
     marginLeft: 5,
     marginRight: 5,
   },
   textStyle: {
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: '600',
     color: '#007aff',
     alignSelf: 'center',
+    paddingTop: 10,
+    paddingBottom: 10,
   },
 });
 

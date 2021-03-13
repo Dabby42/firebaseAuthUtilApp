@@ -1,21 +1,21 @@
 import React from 'react';
 import firebase from 'firebase';
-import {View, StyleSheet} from 'react-native';
-import Header from './src/components/Header';
-import {Button, Spinner} from './src/components/common';
+import {SafeAreaView, StyleSheet} from 'react-native';
+import {Button, Spinner, Header} from './src/components/common';
 import LoginForm from './src/components/LoginForm';
 
 class App extends React.Component {
-  
+  state = {loggedIn: null};
+
   componentWillMount() {
     firebase.initializeApp({
-      apiKey: 'AIzaSyCt19ZypYlqRLPvWDgYTOOe5fCAeDkUyYY',
-      authDomain: 'auth-68da8.firebaseapp.com',
-      projectId: 'auth-68da8',
-      storageBucket: 'auth-68da8.appspot.com',
-      messagingSenderId: '46794554021',
-      appId: '1:46794554021:web:be97fda1e5da0ae0db2b4c',
-      measurementId: 'G-CKLZE9HLYE',
+      apiKey: process.env.API_KEY,
+      authDomain: process.env.API_KEY,
+      projectId: process.env.API_KEY,
+      storageBucket: process.env.API_KEY,
+      messagingSenderId: process.env.API_KEY,
+      appId: process.env.API_KEY,
+      measurementId: process.env.API_KEY,
     });
 
     firebase.auth().onAuthStateChanged((user) => {
@@ -27,11 +27,14 @@ class App extends React.Component {
     });
   }
 
-  state = {loggedIn: null};
+  onSignOut() {
+    firebase.auth().signOut();
+  }
+
   renderForm() {
     switch (this.state.loggedIn) {
       case true:
-        return <Button>Log Out</Button>;
+        return <Button onSubmit={this.onSignOut}>Log Out</Button>;
       case false:
         return <LoginForm />;
       default:
@@ -41,14 +44,14 @@ class App extends React.Component {
 
   render() {
     return (
-      <View>
+      <SafeAreaView>
         <Header headerText="Authentication" />
         {this.renderForm()}
-      </View>
+      </SafeAreaView>
     );
   }
 }
-
+// forceInset={{top: 'always'}}
 const styles = StyleSheet.create({});
 
 export default App;
